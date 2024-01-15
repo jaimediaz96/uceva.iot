@@ -1,10 +1,13 @@
-import './App.css'
+import { BrowserRouter } from "react-router-dom"
+import AppRoutes from "./Routes/AppRoutes";
+import "./App.css"
 
 function App() {
+
   return (
-    <div className='bg-black text-white'>
-      Hola mundo!!!
-    </div>
+    <BrowserRouter>
+      <AppRoutes />
+    </BrowserRouter>
   )
 }
 

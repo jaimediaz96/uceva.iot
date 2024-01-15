@@ -3,7 +3,7 @@ function Blog() {
     <div>
       Blog
     </div>
-  )
+  );
 }
 
-export default Blog
+export default Blog;

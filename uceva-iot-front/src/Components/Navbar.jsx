@@ -50,7 +50,7 @@ function Navbar() {
         </li>
       </ul>
     </nav>
-  )
+  );
 }
 
-export default Navbar
+export default Navbar;

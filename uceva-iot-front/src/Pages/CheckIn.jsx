@@ -3,7 +3,7 @@ function CheckIn() {
     <div>
       CheckIn
     </div>
-  )
+  );
 }
 
-export default CheckIn
+export default CheckIn;

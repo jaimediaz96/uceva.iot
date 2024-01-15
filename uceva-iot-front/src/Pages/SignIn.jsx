@@ -3,7 +3,7 @@ function SignIn() {
     <div>
       SignIn
     </div>
-  )
+  );
 }
 
-export default SignIn
+export default SignIn;

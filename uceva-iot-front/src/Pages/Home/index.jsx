@@ -1,9 +1,10 @@
 import Carousel from "./Carousel";
+import ProjectSummary from "./ProjectSummary";
 
 function Home() {
   return (
-    <div className="flex justify-between">
-      <div className="h-20 w-32">a</div>
+    <div className="flex gap-20">
+      <ProjectSummary />
       <Carousel />
     </div>
   );

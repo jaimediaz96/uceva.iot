@@ -4,7 +4,7 @@ function Navbar() {
   const activeStyle = "underline underline-offset-4";
 
   return (
-    <nav className="flex justify-between items-center fixed top-0 w-full z-10 py-3 px-10 font-extrabold text-lg">
+    <nav className="flex justify-between items-center fixed top-0 w-full z-10 px-10 font-extrabold text-lg">
       <ul className="flex items-center gap-4">
         <li>
           <NavLink to="/">

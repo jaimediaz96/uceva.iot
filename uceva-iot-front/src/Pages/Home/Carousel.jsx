@@ -35,7 +35,7 @@ const Carousel = () => {
   }
 
   return (
-    <div className='flex items-center w-96 h-96'>
+    <div className='flex items-center w-1/2 h-96'>
       <button
         className="hover:bg-gray-100"
         onClick={prevImage}
@@ -43,7 +43,7 @@ const Carousel = () => {
         <ChevronLeftIcon className="h-8 w-8 text-black" />
       </button>
       <img
-        className="w-full h-full object-contain"
+        className="w-3/4 h-full object-contain"
         src={images[currentImageIndex]}
         alt={`Slide ${currentImageIndex}`}
       />

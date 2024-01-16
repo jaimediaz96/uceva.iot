@@ -3,6 +3,7 @@ import { UcevaIotProvider } from "./Context/UcevaIotContext";
 import AppRoutes from "./Routes/AppRoutes";
 import Navbar from "./Components/Navbar";
 import Layout from "./Components/Layout";
+import Footer from "./Components/Footer";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
         <Layout>
           <AppRoutes />
         </Layout>
+        <Footer />
       </BrowserRouter>
     </UcevaIotProvider>
   );

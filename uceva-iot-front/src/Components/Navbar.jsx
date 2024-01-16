@@ -4,12 +4,12 @@ function Navbar() {
   const activeStyle = "underline underline-offset-4";
 
   return (
-    <nav className="flex justify-between items-center fixed top-0 w-full z-10 px-10 font-extrabold text-lg">
+    <nav className="flex justify-between items-center fixed top-0 w-full z-10 px-10 font-extrabold text-lg bg-green-600 text-white">
       <ul className="flex items-center gap-4">
         <li>
           <NavLink to="/">
             <img
-              className='h-24'
+              className='h-24  opacity-90 mix-blend-difference'
               src="../../public/Logo.png"
               alt="Logo Uceva.Iot" />
           </NavLink>

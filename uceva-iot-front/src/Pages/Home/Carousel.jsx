@@ -35,18 +35,20 @@ const Carousel = () => {
   }
 
   return (
-    <div className='flex items-center w-1/2 h-96'>
+    <div className='flex items-center w-full h-3/4'>
       <button
         className="hover:bg-gray-100"
         onClick={prevImage}
       >
         <ChevronLeftIcon className="h-8 w-8 text-black" />
       </button>
-      <img
-        className="w-3/4 h-full object-contain"
-        src={images[currentImageIndex]}
-        alt={`Slide ${currentImageIndex}`}
-      />
+      <figure className="w-full h-4/5 mb-2">
+        <img
+          className="w-full h-full object-contain rounded-lg"
+          src={images[currentImageIndex]}
+          alt={`Slide ${currentImageIndex}`}
+        />
+      </figure>
       <button
         className="hover:bg-gray-100"
         onClick={nextImage}

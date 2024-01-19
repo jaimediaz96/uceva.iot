@@ -1,6 +1,6 @@
 function CallToAction() {
   return (
-    <div className="h-1/4 bg-blue-200 px-5 py-3 m-3 text-center">
+    <div className="bg-blue-200 px-5 py-3 m-3 text-center">
       <h2 className="text-l lg:text-2xl font-bold mb-3">
         Únete a la Innovación Educativa con IoT
       </h2>

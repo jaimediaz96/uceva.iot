@@ -3,11 +3,11 @@ import { ChevronLeftIcon, ChevronRightIcon } from '@heroicons/react/24/solid'
 
 const Carousel = () => {
   const images = [
-    "../../../public/example1.png",
-    "../../../public/example2.png",
-    "../../../public/example3.png",
-    "../../../public/example4.png",
-    "../../../public/example5.png",
+    "/example1.png",
+    "/example2.png",
+    "/example3.png",
+    "/example4.png",
+    "/example5.png",
   ];
 
   const [currentImageIndex, setCurrentImageIndex] = useState(0);

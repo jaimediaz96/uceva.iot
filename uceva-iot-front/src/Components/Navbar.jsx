@@ -10,7 +10,7 @@ function Navbar() {
           <NavLink to="/">
             <img
               className='h-24  opacity-90 mix-blend-difference'
-              src="../../public/Logo.png"
+              src="/Logo.png"
               alt="Logo Uceva.Iot" />
           </NavLink>
         </li>

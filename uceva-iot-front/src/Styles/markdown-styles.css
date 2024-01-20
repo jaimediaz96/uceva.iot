@@ -1,0 +1,97 @@
+.markdown-container {
+  @apply text-gray-800;
+}
+
+/* Estilos para encabezados */
+.markdown-container h1 {
+  @apply text-3xl font-bold my-4;
+}
+
+.markdown-container h2 {
+  @apply text-2xl font-bold my-3;
+}
+
+.markdown-container h3 {
+  @apply text-xl font-semibold my-2;
+}
+
+.markdown-container h4 {
+  @apply text-lg font-medium my-2;
+}
+
+.markdown-container h5 {
+  @apply text-base font-medium my-1;
+}
+
+.markdown-container h6 {
+  @apply text-sm font-medium my-1;
+}
+
+/* Estilos para párrafos */
+.markdown-container p {
+  @apply text-base my-2;
+}
+
+/* Estilos para listas ordenadas y no ordenadas */
+.markdown-container ul,
+.markdown-container ol {
+  @apply list-disc list-inside;
+}
+
+.markdown-container ol {
+  @apply list-decimal;
+}
+
+.markdown-container ul ul,
+.markdown-container ul ol,
+.markdown-container ol ul,
+.markdown-container ol ol {
+  @apply ml-4;
+}
+
+/* Estilos para enlaces */
+.markdown-container a {
+  @apply text-blue-600 hover:text-blue-800;
+}
+
+/* Estilos para imágenes */
+.markdown-container img {
+  @apply max-w-full h-auto my-4;
+}
+
+/* Estilos para blockquotes */
+.markdown-container blockquote {
+  @apply border-l-4 border-gray-400 pl-4 italic;
+}
+
+/* Estilos para código en línea */
+.markdown-container code {
+  @apply bg-gray-100 text-red-500 font-mono text-sm px-2 py-1 rounded-md;
+}
+
+.markdown-container code.language-javascript {
+  @apply text-blue-900;
+}
+
+.markdown-container code.language-html {
+  @apply text-green-900;
+}
+
+/* Estilos para bloques de código */
+.markdown-container pre {
+  @apply bg-gray-100 p-4 rounded overflow-x-auto;
+}
+
+/* Estilos para tablas */
+.markdown-container table {
+  @apply min-w-full my-4;
+}
+
+.markdown-container th,
+.markdown-container td {
+  @apply border border-gray-300 px-4 py-2;
+}
+
+.markdown-container th {
+  @apply bg-gray-100;
+}

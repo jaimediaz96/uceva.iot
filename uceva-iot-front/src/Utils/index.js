@@ -8,7 +8,10 @@ async function getMetadataFromBlog(urls) {
       const response = await fetch(url);
       const markdownText = await response.text();
       const parsedMarkdown = grayMatter(markdownText);
-      metadataList.push(parsedMarkdown.data);
+      metadataList.push({
+        ...parsedMarkdown.data,
+        content: parsedMarkdown.content,
+      });
     } catch (error) {
       console.error("Error fetching markdown content:", error);
     }
@@ -17,15 +20,4 @@ async function getMetadataFromBlog(urls) {
   return metadataList;
 }
 
-async function getContentFromBlog(url) {
-  try {
-    const response = await fetch(url);
-    const markdownText = await response.text();
-    const parsedMarkdown = grayMatter(markdownText);
-    return parsedMarkdown.content;
-  } catch (error) {
-    console.error("Error fetching markdown content:", error);
-  }
-}
-
-export { getMetadataFromBlog, getContentFromBlog };
+export { getMetadataFromBlog };

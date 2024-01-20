@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import CardBlog from "../Components/CardBlog";
 
 function Blogs() {
-  const { metadataBlogs } = useContext(UcevaIotContext);
+  const { dataBlogs } = useContext(UcevaIotContext);
 
   return (
     <>
@@ -12,8 +12,8 @@ function Blogs() {
         <h1 className="font-medium text-xl">Proyectos</h1>
       </div>
       {
-        metadataBlogs?.map((data, index) => (
-          <Link key={index} to={`/blog/${data.id}`}>
+        dataBlogs?.map(data => (
+          <Link key={data.id} to={`/blog/${data.id}-${data.title.replace(/\s/g, "-")}`}>
             <CardBlog
               title={data.title}
               description={data.description}

@@ -7,7 +7,7 @@ function Footer() {
       <p className="text-sm">
         UCEVA
       </p>
-      <p className="text-xs">© 2024 Todos los derechos reservados</p>
+      <p className="text-xs">© {new Date().getFullYear()} Todos los derechos reservados</p>
     </footer>
   );
 }

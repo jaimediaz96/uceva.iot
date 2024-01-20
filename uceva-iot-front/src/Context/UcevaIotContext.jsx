@@ -4,21 +4,24 @@ import { getMetadataFromBlog } from "../Utils";
 const UcevaIotContext = createContext();
 
 function UcevaIotProvider({ children }) {
-  const urls = ['/Content/first-post.md', 'Content/second-post.md']; // Mock of data of API
+  const urls = [
+    "/Content/0-My-first-post.md",
+    "/Content/1-My-second-post.md",
+    "/Content/2-My-third-post.md"
+  ]; // Mock of data of API
 
-  const [metadataBlogs, setMetadataBlogs] = useState([]);
-  console.log('Metadatos:', metadataBlogs);
+  const [dataBlogs, setDataBlogs] = useState([]);
 
   useEffect(() => {
     getMetadataFromBlog(urls)
-      .then(data => setMetadataBlogs(data))
-      .catch(setMetadataBlogs([]));
+      .then(data => setDataBlogs(data))
+      .catch(setDataBlogs([]));
   }, []);
 
   return (
     <UcevaIotContext.Provider value={{
-      metadataBlogs,
-      setMetadataBlogs
+      dataBlogs,
+      setDataBlogs
     }}>
       {children}
     </UcevaIotContext.Provider>

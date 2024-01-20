@@ -1,7 +1,10 @@
+import { ShieldExclamationIcon } from '@heroicons/react/24/solid'
+
 function NotFound() {
   return (
-    <div>
-      NotFound
+    <div className='flex flex-col justify-center items-center h-screen'>
+      <ShieldExclamationIcon className='h-20 text-black' />
+      <p>NotFound</p>
     </div>
   );
 }

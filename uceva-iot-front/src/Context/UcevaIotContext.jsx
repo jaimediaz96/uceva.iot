@@ -11,7 +11,7 @@ function UcevaIotProvider({ children }) {
   ]; // Mock of data of API
 
   const [dataBlogs, setDataBlogs] = useState([]);
-  const [user, setUser] = useState("");
+  const [user, setUser] = useState({});
 
   useEffect(() => {
     getMetadataFromBlog(urls)

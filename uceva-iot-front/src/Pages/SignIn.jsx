@@ -1,52 +1,53 @@
-import { useState, useRef } from "react";
-import { useContext } from "react";
+import { useState, useRef, useContext } from "react";
 import { Navigate } from "react-router-dom";
 import { UcevaIotContext } from "../Context/UcevaIotContext";
 
 function SignIn() {
   const { setUser } = useContext(UcevaIotContext);
   const formRef = useRef(null);
-  const [errorEmail, setErrorEmail] = useState('');
-  const [errorPassword, setErrorPassword] = useState('');
-  const [errorCredential, setErrorCredential] = useState('');
-  const [redirectTo, setRedirectTo] = useState('');
+  const [errorEmail, setErrorEmail] = useState("");
+  const [errorPassword, setErrorPassword] = useState("");
+  const [errorCredential, setErrorCredential] = useState("");
+  const [redirectTo, setRedirectTo] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setErrorEmail('');
-    setErrorPassword('');
-    setErrorCredential('');
+    setErrorEmail("");
+    setErrorPassword("");
+    setErrorCredential("");
 
     const formData = new FormData(formRef.current);
     let email = formData.get("email");
     let password = formData.get("password");
 
-    email = sanitizeInput(email);
-    password = sanitizeInput(password);
+    email = sanitizeInputXSS(email);
+    password = sanitizeInputXSS(password);
 
-    if (!email.endsWith('@uceva.edu.co')) {
-      setErrorEmail('Correo electrónico de la Uceva.');
+    const emailRegex = /^[a-z]+\.[a-z]+[0-9]+@uceva\.edu\.co$/;
+
+    if (!emailRegex.test(email)) {
+      setErrorEmail("Correo electrónico de la Uceva.");
       return;
     }
 
     if (password.length < 5) {
-      setErrorPassword('Contraseña muy corta.');
+      setErrorPassword("Contraseña muy corta.");
       return;
     }
 
+    // ----- Send to API and Validate
     console.log("Email:", email);
     console.log("Password:", password);
-    // ----- Send to API and Validate
 
-    setUser(email);
-    setRedirectTo("/work-place")
+    setUser({ email });
+    setRedirectTo("/work-place");
   };
 
-  const sanitizeInput = (input) => {
+  function sanitizeInputXSS(input) {
     const div = document.createElement("div");
     div.textContent = input;
     return div.innerHTML;
-  };
+  }
 
   if (redirectTo) {
     return <Navigate replace to={redirectTo} />;
@@ -56,7 +57,7 @@ function SignIn() {
     <form
       ref={formRef}
       onSubmit={handleSubmit}
-      className="p-4 max-w-md mx-auto">
+      className="flex flex-col justify-center items-center h-[70vh]">
       <div className="mb-4">
         <label
           htmlFor="email"
@@ -72,10 +73,12 @@ function SignIn() {
           className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
         />
       </div>
-      {errorEmail &&
+      {
+        errorEmail &&
         <div className="text-red-500 text-sm mb-2">
           {errorEmail}
-        </div>}
+        </div>
+      }
       <div className="mb-6">
         <label
           htmlFor="password"
@@ -91,19 +94,23 @@ function SignIn() {
           className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
         />
       </div>
-      {errorPassword &&
+      {
+        errorPassword &&
         <div className="text-red-500 text-sm mb-2">
           {errorPassword}
-        </div>}
+        </div>
+      }
       <button
         type="submit"
-        className="w-full p-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+        className="w-full p-3 rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-300">
         Iniciar sesión
       </button>
-      {errorCredential &&
-        <div className="text-red-500 text-sm mb-2">
+      {
+        errorCredential &&
+        <div className="text-red-500 text-sm">
           {errorCredential}
-        </div>}
+        </div>
+      }
     </form>
   );
 }

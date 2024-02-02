@@ -1,36 +1,37 @@
-import { NavLink } from "react-router-dom"
+import { NavLink } from "react-router-dom";
 
 function Navbar() {
   const activeStyle = "underline underline-offset-4";
 
   return (
-    <nav className="flex justify-between items-center fixed top-0 w-full z-10 px-10 font-extrabold text-lg bg-green-600 text-white">
+    <nav className="flex justify-between items-center top-0 w-full z-10 px-10 font-extrabold text-lg bg-green-600 text-white">
       <ul className="flex items-center gap-4">
         <li>
           <NavLink to="/">
             <img
-              className='h-24  opacity-90 mix-blend-difference'
+              className='h-24 opacity-90 mix-blend-difference'
               src="/Logo.png"
               alt="Logo Uceva.Iot" />
           </NavLink>
         </li>
-        <li>
+        {}
+        <li className="ml-20">
           <NavLink
             to="/about"
             className={({ isActive }) =>
               isActive ? activeStyle : undefined
             }>
-            Acerca de
+            ACERCA DE
           </NavLink>
         </li>
-        <li>
+        {}
+        <li className="ml-4">
           <NavLink
             to="/blogs"
             className={({ isActive }) =>
               isActive ? activeStyle : undefined
             }>
-            Proyectos
-          </NavLink>
+            PROYECTOS          </NavLink>
         </li>
       </ul>
       <ul className="flex items-center gap-4">

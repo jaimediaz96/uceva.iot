@@ -62,7 +62,7 @@ function SignIn() {
         <label
           htmlFor="email"
           className="block text-sm font-medium text-gray-700">
-          Email
+          Correo electrónico
         </label>
         <input
           type="email"
@@ -83,7 +83,7 @@ function SignIn() {
         <label
           htmlFor="password"
           className="block text-sm font-medium text-gray-700">
-          Password
+          Contraseña
         </label>
         <input
           type="password"

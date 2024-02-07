@@ -9,7 +9,7 @@ function Blogs() {
   return (
     <>
       <div className="flex items-center justify-center relative w-80 mb-4">
-        <h1 className="font-medium text-xl">Proyectos</h1>
+        <h1 className="text-4xl font-bold text-center text-gray-800 my-6">Proyectos</h1>
       </div>
       {
         dataBlogs?.map(data => (

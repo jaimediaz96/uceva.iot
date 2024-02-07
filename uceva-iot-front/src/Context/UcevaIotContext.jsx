@@ -12,7 +12,7 @@ function UcevaIotProvider({ children }) {
 
   const [dataBlogs, setDataBlogs] = useState([]);
   const [user, setUser] = useState({});
-
+  console.log(user);
   useEffect(() => {
     getMetadataFromBlog(urls)
       .then(data => setDataBlogs(data))

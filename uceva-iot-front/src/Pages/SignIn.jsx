@@ -1,6 +1,7 @@
 import { useState, useRef, useContext } from "react";
-import { Navigate } from "react-router-dom";
+import { Navigate, Link } from "react-router-dom";
 import { UcevaIotContext } from "../Context/UcevaIotContext";
+import { FaUserAlt, FaLock } from 'react-icons/fa'; 
 
 function SignIn() {
   const { setUser } = useContext(UcevaIotContext);
@@ -20,9 +21,6 @@ function SignIn() {
     let email = formData.get("email");
     let password = formData.get("password");
 
-    email = sanitizeInputXSS(email);
-    password = sanitizeInputXSS(password);
-
     const emailRegex = /^[a-z]+\.[a-z]+[0-9]+@uceva\.edu\.co$/;
 
     if (!emailRegex.test(email)) {
@@ -35,7 +33,6 @@ function SignIn() {
       return;
     }
 
-    // ----- Send to API and Validate
     console.log("Email:", email);
     console.log("Password:", password);
 
@@ -43,75 +40,75 @@ function SignIn() {
     setRedirectTo("/work-place");
   };
 
-  function sanitizeInputXSS(input) {
-    const div = document.createElement("div");
-    div.textContent = input;
-    return div.innerHTML;
-  }
-
   if (redirectTo) {
     return <Navigate replace to={redirectTo} />;
   }
 
   return (
-    <form
-      ref={formRef}
-      onSubmit={handleSubmit}
-      className="flex flex-col justify-center items-center h-[70vh]">
-      <div className="mb-4">
-        <label
-          htmlFor="email"
-          className="block text-sm font-medium text-gray-700">
-          Email
-        </label>
-        <input
-          type="email"
-          name="email"
-          id="email"
-          required
-          autoComplete="email"
-          className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-        />
-      </div>
-      {
-        errorEmail &&
-        <div className="text-red-500 text-sm mb-2">
-          {errorEmail}
+    <div className="min-h-screen flex items-center justify-center bg-cover bg-[url('/path-to-your-background-image.jpg')]">
+      <form
+        ref={formRef}
+        onSubmit={handleSubmit}
+        className="bg-white bg-opacity-90 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+      >
+        <div className="mb-4">
+          <div className="flex items-center border-b border-teal-500 py-2">
+            <FaUserAlt className="text-gray-500 mr-2" />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              required
+              autoComplete="email"
+              placeholder="Correo electrónico"
+              className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+            />
+          </div>
+          {errorEmail && <p className="text-red-500 text-xs italic">{errorEmail}</p>}
         </div>
-      }
-      <div className="mb-6">
-        <label
-          htmlFor="password"
-          className="block text-sm font-medium text-gray-700">
-          Password
-        </label>
-        <input
-          type="password"
-          name="password"
-          id="password"
-          required
-          autoComplete="current-password"
-          className="mt-1 p-2 block w-full border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500"
-        />
-      </div>
-      {
-        errorPassword &&
-        <div className="text-red-500 text-sm mb-2">
-          {errorPassword}
+        <div className="mb-6">
+          <div className="flex items-center border-b border-teal-500 py-2">
+            <FaLock className="text-gray-500 mr-2" />
+            <input
+              type="password"
+              name="password"
+              id="password"
+              required
+              autoComplete="current-password"
+              placeholder="Contraseña"
+              className="appearance-none bg-transparent border-none w-full text-gray-700 mr-3 py-1 px-2 leading-tight focus:outline-none"
+            />
+          </div>
+          {errorPassword && <p className="text-red-500 text-xs italic">{errorPassword}</p>}
         </div>
-      }
-      <button
-        type="submit"
-        className="w-full p-3 rounded-md text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-300">
-        Iniciar sesión
-      </button>
-      {
-        errorCredential &&
-        <div className="text-red-500 text-sm">
-          {errorCredential}
+        <div className="flex items-center justify-between">
+          <button
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            type="submit"
+          >
+            Iniciar sesión
+          </button>
+          <Link
+            to="/forgot-password"
+            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
+          >
+            ¿Olvidaste tu contraseña?
+          </Link>
         </div>
-      }
-    </form>
+        {errorCredential && <p className="text-red-500 text-xs italic">{errorCredential}</p>}
+        <div className="text-center mt-4">
+          <p>
+            ¿Nuevo en Uceva.IoT? 
+            <Link 
+              to="/check-in" 
+              className="text-blue-500 hover:text-blue-800"
+            >
+              Crea una cuenta
+            </Link>
+          </p>
+        </div>
+      </form>
+    </div>
   );
 }
 

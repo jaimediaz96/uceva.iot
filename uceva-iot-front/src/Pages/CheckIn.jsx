@@ -3,16 +3,22 @@ import { Navigate } from 'react-router-dom';
 import { UcevaIotContext } from '../Context/UcevaIotContext';
 import { ChevronDownIcon } from '@heroicons/react/24/solid'
 
+
 function CheckIn() {
   const { setUser } = useContext(UcevaIotContext);
   const formRef = useRef(null);
+  const recaptchaRef = useRef(null);
   const [errorCredential, setErrorCredential] = useState("");
   const [redirectTo, setRedirectTo] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    setErrorCredential("")
 
+    const recaptchaValue = recaptchaRef.current.getValue();
+    if (!recaptchaValue) {
+      setErrorCredential("Por favor confirme que no es un robot.");
+      return;
+    }
     const formData = new FormData(formRef.current);
     const data = {
       firstName: sanitizeInputXSS(formData.get("firstName").trim()),
@@ -73,6 +79,7 @@ function CheckIn() {
     console.log("Datos del formulario:", data);
 
     setUser(data);
+    recaptchaRef.current.reset();
     setRedirectTo("/work-place");
   };
 

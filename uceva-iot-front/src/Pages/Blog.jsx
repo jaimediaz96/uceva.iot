@@ -22,7 +22,7 @@ function Blog() {
 
   function renderImg() {
     if (metadata.image) {
-      return (<img src={`/${metadata.image}`} alt={metadata.image} />);
+      return (<img src={metadata.image} alt={metadata.image} />);
     }
     else {
       return (<PhotoIcon className="h-32 text-black" />);

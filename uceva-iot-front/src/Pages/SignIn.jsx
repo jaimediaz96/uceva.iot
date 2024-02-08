@@ -1,7 +1,7 @@
 import { useState, useRef, useContext } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { UcevaIotContext } from "../Context/UcevaIotContext";
-import { FaUserAlt, FaLock } from 'react-icons/fa'; 
+import { FaUserAlt, FaLock } from 'react-icons/fa';
 
 function SignIn() {
   const { setUser } = useContext(UcevaIotContext);
@@ -98,9 +98,9 @@ function SignIn() {
         {errorCredential && <p className="text-red-500 text-xs italic">{errorCredential}</p>}
         <div className="text-center mt-4">
           <p>
-            ¿Nuevo en Uceva.IoT? 
-            <Link 
-              to="/check-in" 
+            ¿Nuevo en Uceva.IoT?
+            <Link
+              to="/check-in"
               className="text-blue-500 hover:text-blue-800"
             >
               Crea una cuenta

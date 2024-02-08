@@ -8,22 +8,30 @@ function Blogs() {
 
   return (
     <>
-      <div className="flex items-center justify-center relative w-80 mb-4">
-        <h1 className="text-4xl font-bold text-center text-gray-800 my-6">Proyectos</h1>
-      </div>
-      {
-        dataBlogs?.map(data => (
-          <Link key={data.id} to={`/blog/${data.id}-${data.title.replace(/\s/g, "-")}`}>
-            <CardBlog
-              title={data.title}
-              description={data.description}
-              image={data.image}
-              author={data.author}
-              date={data.date}
-            />
-          </Link>
-        ))
-      }
+      <section className="w-full p-16 bg-green-600 text-white font-bold text-center border">
+        <h1 className="text-4xl mb-4">Innovación y Aprendizaje</h1>
+        <h2 className="text-xl">El impacto de la IoT en la UCEVA</h2>
+      </section>
+      <main className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 p-16">
+        {
+          dataBlogs?.map(data => (
+            <article key={data.id} className="flex flex-col justify-center">
+              <Link
+                key={data.id}
+                to={`/blog/${data.id}-${data.title.replace(/\s/g, "-")}`}
+                className="min-h-[500px] max-h-[600px] overflow-hidden">
+                <CardBlog
+                  title={data.title}
+                  description={data.description}
+                  image={data.image}
+                  author={data.author}
+                  date={data.date}
+                />
+              </Link>
+            </article>
+          ))
+        }
+      </main>
     </>
   );
 

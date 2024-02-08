@@ -7,7 +7,8 @@ function UcevaIotProvider({ children }) {
   const urls = [
     "/Content/0-My-first-post.md",
     "/Content/1-My-second-post.md",
-    "/Content/2-My-third-post.md"
+    "/Content/2-My-third-post.md",
+    "/Content/3-Smart-Water.md"
   ]; // Mock of data of API
 
   const [dataBlogs, setDataBlogs] = useState([]);

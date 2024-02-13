@@ -5,6 +5,7 @@ import Navbar from "./Components/Navbar";
 import Layout from "./Components/Layout";
 import Footer from "./Components/Footer";
 import ScrollToTop from './Components/ScrollToTop';
+import HamburgerMenu from "./Components/HamburgerMenu";
 
 function App() {
 
@@ -13,6 +14,7 @@ function App() {
       <BrowserRouter>
         <ScrollToTop />
         <Navbar />
+        <HamburgerMenu />
         <Layout>
           <AppRoutes />
         </Layout>

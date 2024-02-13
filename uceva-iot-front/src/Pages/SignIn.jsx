@@ -17,11 +17,11 @@ function SignIn() {
     setErrorPassword("");
     setErrorCredential("");
 
-    const formData = new FormData(formRef.current);
-    let email = formData.get("email");
-    let password = formData.get("password");
+    const emailRegex = /^[A-Za-z0-9.]+@uceva\.edu\.co$/;
 
-    const emailRegex = /^[a-z]+\.[a-z]+[0-9]+@uceva\.edu\.co$/;
+    const formData = new FormData(formRef.current);
+    const email = sanitizeInputXSS(formData.get("email").trim());
+    const password = sanitizeInputXSS(formData.get("password"));
 
     if (!emailRegex.test(email)) {
       setErrorEmail("Correo electrónico de la Uceva.");
@@ -33,6 +33,9 @@ function SignIn() {
       return;
     }
 
+    // VALIDATE API
+    // setErrorCredential("Usuario o Contraseña incorrectos");
+
     console.log("Email:", email);
     console.log("Password:", password);
 
@@ -40,16 +43,22 @@ function SignIn() {
     setRedirectTo("/work-place");
   };
 
+  function sanitizeInputXSS(input) {
+    const div = document.createElement("div");
+    div.textContent = input;
+    return div.innerHTML;
+  }
+
   if (redirectTo) {
     return <Navigate replace to={redirectTo} />;
   }
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-cover bg-[url('/path-to-your-background-image.jpg')]">
+    <div className="my-36 flex items-center justify-center bg-cover bg-[url('/path-to-your-background-image.jpg')]">
       <form
         ref={formRef}
         onSubmit={handleSubmit}
-        className="bg-white bg-opacity-90 shadow-md rounded px-8 pt-6 pb-8 mb-4"
+        className="bg-white bg-opacity-90 shadow-md rounded px-8 pt-6 pb-8"
       >
         <div className="mb-4">
           <div className="flex items-center border-b border-teal-500 py-2">
@@ -83,7 +92,7 @@ function SignIn() {
         </div>
         <div className="flex items-center justify-between">
           <button
-            className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+            className="bg-blue-500 hover:bg-blue-700 text-white font-bold mr-2 py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             type="submit"
           >
             Iniciar sesión
@@ -101,7 +110,7 @@ function SignIn() {
             ¿Nuevo en Uceva.IoT?
             <Link
               to="/check-in"
-              className="text-blue-500 hover:text-blue-800"
+              className="ml-1 text-blue-500 hover:text-blue-800"
             >
               Crea una cuenta
             </Link>

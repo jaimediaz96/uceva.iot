@@ -12,7 +12,7 @@ function Blogs() {
         <h1 className="text-4xl mb-4">Innovación y Aprendizaje</h1>
         <h2 className="text-xl">El impacto de la IoT en la UCEVA</h2>
       </section>
-      <main className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-4 p-16">
+      <main className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 p-4 pt-10 sm:p-8">
         {
           dataBlogs?.map(data => (
             <article key={data.id} className="flex flex-col justify-center">

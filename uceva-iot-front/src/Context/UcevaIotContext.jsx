@@ -13,6 +13,8 @@ function UcevaIotProvider({ children }) {
 
   const [dataBlogs, setDataBlogs] = useState([]);
   const [user, setUser] = useState({});
+  const [isHamburgerMenuOpen, setIsHamburgerMenuOpen] = useState(false);
+  const [isUserMenuOpen, setIsUserMenuOpen] = useState(false);
   console.log(user);
   useEffect(() => {
     getMetadataFromBlog(urls)
@@ -25,7 +27,11 @@ function UcevaIotProvider({ children }) {
       dataBlogs,
       setDataBlogs,
       user,
-      setUser
+      setUser,
+      isHamburgerMenuOpen,
+      setIsHamburgerMenuOpen,
+      isUserMenuOpen,
+      setIsUserMenuOpen
     }}>
       {children}
     </UcevaIotContext.Provider>
